@@ -33,7 +33,7 @@ $userEmail = $_SESSION['email'] = isset( $_SESSION['email'] )? $_SESSION['email'
 if( $isUserLoggedIn && !empty($userEmail))
 {
     $result = mysql_query( "
-    SELECT * FROM signin WHERE email = '" . $userEmail . "'");
+    SELECT 'email' FROM signin WHERE email = '" . $userEmail . "'");
     $resultCount = mysql_num_rows($result);
     //if( $resultCount != 1){
 	//echo "to login to see this page";
@@ -42,6 +42,6 @@ if( $isUserLoggedIn && !empty($userEmail))
 } else {
     echo "you have to login to see this page";
 }
-header("Location: redirect.html");
-?>
+header("Location: redirect.php");
+
 	
