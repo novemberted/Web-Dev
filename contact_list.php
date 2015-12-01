@@ -3,7 +3,7 @@
 	$connection = mysql_connect('localhost', 'root', ''); 
 	mysql_select_db('final_project');
 
-	$query = "SELECT name, email FROM contacts"; 
+	$query = "SELECT `name`, `email` FROM `contacts`"; 
 	$result = mysql_query($query);
 	 
 	$contact = "";
