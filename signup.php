@@ -3,6 +3,8 @@ include "connection.php";
 
 $email = $_POST['email'];
 $password = $_POST['password'];
+$name = mysql_real_escape_string($name);
+$email = mysql_real_escape_string($email);
 	
 //Insert data
 $sql = "INSERT INTO signin(email, password)
