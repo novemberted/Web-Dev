@@ -1,26 +1,41 @@
-<html>
-<body>
-<div align="center">
-<h1>Contact List</h1>
 <?php
 
 	$connection = mysql_connect('localhost', 'root', ''); 
 	mysql_select_db('final_project');
 
-	$query = "SELECT * FROM contacts"; 
+	$query = "SELECT `id`, `name`, `email` FROM `contacts`"; 
 	$result = mysql_query($query);
-	
-	echo "<table>"; 
+	 
+	$contact = "";
 
-	while($row = mysql_fetch_array($result)){   
-	echo "<tr><td>" . $row['name'] . "</td><td></td><td></td><td></td><td>" . $row['email'] . "</td><td></td><td></td><td></td><td>" . $row['password'] . "</td></tr>";  
+	while($row = mysql_fetch_array($result)){
+	$id = $row['id'];
+	$name = $row['name'];
+	$email = $row['email'];  
+	$contact .= "<tr><td>". $id . "</td><td></td><td></td>";
+	$contact .= "<td>". $name . "</td><td></td><td></td>";
+	$contact .= "<td>". $email . "</td></tr>";   
 	}
-	
-	echo "</table>"; 
 
 	mysql_close(); 
 
 	?>
-</div>
+
+<html>
+<body>
+	<div align="center">
+	<h1>Contact List</h1>
+	<div align="center">
+	<?php
+		echo "<table>";
+		echo $contact; 
+		echo "</table>";
+	?>
+		<p>
+		<h3><a href="http://localhost/Ted/contact_create.php">Create</a></h3>
+		<h3><a href="http://localhost/Ted/contact_edit.html">Edit</a></h3>
+		<h3><a href="http://localhost/Ted/contact_delete.html">Delete</a></h3>
+	</p>
+	
 </body>
 </html>

@@ -1,23 +1,29 @@
 <?php
 include "connection.php";
 
-$name = $_POST['name'];
 $email = $_POST['email'];
 $password = $_POST['password'];
 $name = mysql_real_escape_string($name);
 $email = mysql_real_escape_string($email);
-$password = mysql_real_escape_string($password);
-
+	
 //Insert data
-$sql = "INSERT INTO contacts(name, email, password)
-VALUE('$name', '$email', '$password')";
+$sql = "INSERT INTO signin(email, password)
+VALUE('$email', '$password')";
 
 if ($conn->query($sql) === TRUE) {
-   	echo "Database created successfully";
+   	echo " ";
 } else {
    	echo "Error creating database: " . $conn->error;
 }
 
 $conn->close();
-header("Location: contact_list.php");
+?>
 
+<html>
+<body>
+<div align="center">
+	<h1>Sign up Success</h1>
+	<h1><a href="http://localhost/Ted/contact_list.php">Go to contact</a></h1>
+</div>
+</body>
+</html>
